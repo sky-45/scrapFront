@@ -19,8 +19,19 @@ jobs:
       - name: GitHub Action for Yarn
         uses: Borales/actions-yarn@v2.3.0
 
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: '16.x'
+          cache: 'yarn'
+          
+
+      
       - name: Install dependencies
-        run: yarn
+        run: yarn install
 
       - name: Build
         run: yarn build
